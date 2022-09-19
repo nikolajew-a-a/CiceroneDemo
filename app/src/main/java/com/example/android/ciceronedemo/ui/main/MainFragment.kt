@@ -1,6 +1,5 @@
 package com.example.android.ciceronedemo.ui.main
 
-import android.hardware.SensorEventListener
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +11,6 @@ import com.example.android.ciceronedemo.R
 
 class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
