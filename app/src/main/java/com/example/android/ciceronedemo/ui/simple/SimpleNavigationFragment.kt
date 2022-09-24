@@ -43,6 +43,11 @@ class SimpleNavigationFragment : Fragment(R.layout.fragment_simple_navigation) {
     private fun initButtons() = with(viewBinding) {
         forwardButton.setOnClickListener { viewModel.forwardAction() }
         backButon.setOnClickListener { viewModel.backAction() }
+        replaceButton.setOnClickListener { viewModel.replaceAction() }
+        forwardWithDelayButton.setOnClickListener { viewModel.forwardWithDelayAction() }
+        newRootButton.setOnClickListener {  }
+        backTo3Button.setOnClickListener {  }
+        finishChainButton.setOnClickListener {  }
     }
 
 }

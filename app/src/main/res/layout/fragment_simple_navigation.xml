@@ -38,6 +38,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Back"/>
+
+        <Button
+            android:id="@+id/replace_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Replace"/>
+
+        <Button
+            android:id="@+id/forward_with_delay_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forward with delay"/>
+
+        <Button
+            android:id="@+id/new_root_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New root"/>
+
+        <Button
+            android:id="@+id/back_to_3_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to 3"/>
+
+        <Button
+            android:id="@+id/finish_chain_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finish chain"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
