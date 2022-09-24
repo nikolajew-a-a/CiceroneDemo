@@ -9,20 +9,20 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android.ciceronedemo.R
 import com.example.android.ciceronedemo.databinding.FragmentSimpleNavigationBinding
 import com.example.android.ciceronedemo.di.viewmodel.injectViewModel
+import com.example.android.ciceronedemo.util.findArgument
+import com.example.android.ciceronedemo.util.withArguments
 
 class SimpleNavigationFragment : Fragment(R.layout.fragment_simple_navigation) {
 
     private val viewBinding by viewBinding(FragmentSimpleNavigationBinding::bind)
     private val viewModel: SimpleNavigationViewModel by injectViewModel()
-    private val args: SimpleNavigationArgs by lazy { requireArguments().getParcelable(ARGS_KEY)!! }
+    private val args: SimpleNavigationArgs by lazy { findArgument(ARGS_KEY)!! }
 
     companion object {
 
         private const val ARGS_KEY = "SimpleNavigationFragmentArgsKey"
 
-        fun newInstance(args: SimpleNavigationArgs) = SimpleNavigationFragment().apply {
-            arguments = bundleOf(ARGS_KEY to args)
-        }
+        fun newInstance(args: SimpleNavigationArgs) = SimpleNavigationFragment().withArguments(ARGS_KEY to args)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
