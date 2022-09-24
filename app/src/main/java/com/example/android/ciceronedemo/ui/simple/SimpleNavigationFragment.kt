@@ -1,7 +1,10 @@
 package com.example.android.ciceronedemo.ui.simple
 
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android.ciceronedemo.R
 import com.example.android.ciceronedemo.databinding.FragmentSimpleNavigationBinding
@@ -11,15 +14,35 @@ class SimpleNavigationFragment : Fragment(R.layout.fragment_simple_navigation) {
 
     private val viewBinding by viewBinding(FragmentSimpleNavigationBinding::bind)
     private val viewModel: SimpleNavigationViewModel by injectViewModel()
-    private val args by lazy { requireArguments().getParcelable(ARGS_KEY, SimpleNavigationArgs::class.java) }
+    private val args: SimpleNavigationArgs by lazy { requireArguments().getParcelable(ARGS_KEY)!! }
 
     companion object {
 
         private const val ARGS_KEY = "SimpleNavigationFragmentArgsKey"
 
-        fun newInstance(args: SimpleNavigationArgs = SimpleNavigationArgs(emptyList())) = SimpleNavigationFragment().apply {
-            arguments?.putParcelable(ARGS_KEY, args)
+        fun newInstance(args: SimpleNavigationArgs) = SimpleNavigationFragment().apply {
+            arguments = bundleOf(ARGS_KEY to args)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+        initButtons()
+    }
+
+    private fun initViewModel() {
+        viewModel.setUpArgs(args)
+        viewModel.backStack.observe(viewLifecycleOwner, this@SimpleNavigationFragment::handleBackStack)
+    }
+
+    private fun handleBackStack(backStack: List<Int>) {
+        viewBinding.backstackInformation.text = backStack.joinToString(" -> ")
+    }
+
+    private fun initButtons() = with(viewBinding) {
+        forwardButton.setOnClickListener { viewModel.forwardAction() }
+        backButon.setOnClickListener { viewModel.backAction() }
     }
 
 }

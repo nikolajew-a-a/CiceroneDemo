@@ -8,13 +8,14 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android.ciceronedemo.R
 import com.example.android.ciceronedemo.databinding.SelectionFragmentBinding
+import com.example.android.ciceronedemo.di.viewmodel.injectViewModel
 import com.example.android.ciceronedemo.ui.simple.SimpleNavigationFragment
 import com.example.android.ciceronedemo.util.showToast
 
 class SelectionFragment : Fragment(R.layout.selection_fragment) {
 
     private val viewBinding by viewBinding(SelectionFragmentBinding::bind)
-    private val viewModel by viewModels<SelectionViewModel>()
+    private val viewModel: SelectionViewModel by injectViewModel()
 
     companion object {
         fun newInstance() = SelectionFragment()
@@ -28,10 +29,7 @@ class SelectionFragment : Fragment(R.layout.selection_fragment) {
     private fun initButtons() = with(viewBinding) {
 
         simpleNavigationButton.setOnClickListener {
-            activity?.supportFragmentManager?.commit {
-                replace(R.id.container, SimpleNavigationFragment.newInstance())
-                addToBackStack(null)
-            }
+            viewModel.toSimpleNavigation()
         }
 
         notImplementedButton.setOnClickListener {
