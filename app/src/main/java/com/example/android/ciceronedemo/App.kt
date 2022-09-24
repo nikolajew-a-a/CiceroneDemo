@@ -6,9 +6,6 @@ import com.example.android.ciceronedemo.di.components.DaggerAppComponent
 import com.github.terrakok.cicerone.Cicerone
 
 class App : Application() {
-    private val cicerone = Cicerone.create()
-    val router get() = cicerone.router
-    val navigatorHolder get() = cicerone.getNavigatorHolder()
 
     val appComponent: AppComponent by lazy(
         DaggerAppComponent
