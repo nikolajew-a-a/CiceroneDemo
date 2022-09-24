@@ -1,10 +1,12 @@
-package com.example.android.ciceronedemo
+package com.example.android.ciceronedemo.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.android.ciceronedemo.databinding.MainActivityBinding
+import com.example.android.ciceronedemo.App
+import com.example.android.ciceronedemo.R
+import com.example.android.ciceronedemo.databinding.BaseActivityBinding
 import com.example.android.ciceronedemo.ui.selection.SelectionFragment
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
@@ -14,8 +16,8 @@ import java.lang.ref.WeakReference
 import java.util.ArrayList
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), ChainHolder {
-    private val viewBinding by viewBinding(MainActivityBinding::bind)
+class BaseActivity : AppCompatActivity(), ChainHolder {
+    private val viewBinding by viewBinding(BaseActivityBinding::bind)
 
     override val chain = ArrayList<WeakReference<Fragment>>()
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity(), ChainHolder {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.INSTANCE.appComponent.inject(this)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.base_activity)
 
         //TODO (replace with Cicerone)
         if (savedInstanceState == null) {

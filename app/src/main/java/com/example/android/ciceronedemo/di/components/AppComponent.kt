@@ -2,7 +2,7 @@ package com.example.android.ciceronedemo.di.components
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.ciceronedemo.MainActivity
+import com.example.android.ciceronedemo.ui.base.BaseActivity
 import com.example.android.ciceronedemo.di.modules.CiceroneModule
 import com.example.android.ciceronedemo.di.modules.VMModel
 import dagger.BindsInstance
@@ -23,7 +23,7 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(activity: MainActivity)
+    fun inject(activity: BaseActivity)
 
     fun provideFactory(): ViewModelProvider.Factory
 }

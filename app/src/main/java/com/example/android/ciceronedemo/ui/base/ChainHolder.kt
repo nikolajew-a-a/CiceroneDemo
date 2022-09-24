@@ -1,4 +1,4 @@
-package com.example.android.ciceronedemo
+package com.example.android.ciceronedemo.ui.base
 
 import androidx.fragment.app.Fragment
 import java.lang.ref.WeakReference

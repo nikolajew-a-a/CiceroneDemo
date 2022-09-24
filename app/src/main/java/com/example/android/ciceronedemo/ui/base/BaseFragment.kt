@@ -1,4 +1,4 @@
-package com.example.android.ciceronedemo
+package com.example.android.ciceronedemo.ui.base
 
 import android.content.Context
 import androidx.annotation.LayoutRes

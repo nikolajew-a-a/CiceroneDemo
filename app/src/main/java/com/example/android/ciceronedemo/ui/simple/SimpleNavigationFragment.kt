@@ -1,12 +1,9 @@
 package com.example.android.ciceronedemo.ui.simple
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.android.ciceronedemo.BaseFragment
+import com.example.android.ciceronedemo.ui.base.BaseFragment
 import com.example.android.ciceronedemo.R
 import com.example.android.ciceronedemo.databinding.FragmentSimpleNavigationBinding
 import com.example.android.ciceronedemo.di.viewmodel.injectViewModel
