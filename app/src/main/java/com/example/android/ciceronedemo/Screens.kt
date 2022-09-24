@@ -6,6 +6,6 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object Screens {
 
-    fun SimpleNavigationFragment(args: SimpleNavigationArgs = SimpleNavigationArgs(emptyList())) =
-        FragmentScreen { SimpleNavigationFragment.newInstance(args) }
+    fun SimpleNavigationFragment(number: Int = 0) =
+        FragmentScreen { SimpleNavigationFragment.newInstance(SimpleNavigationArgs(number = number, time = System.currentTimeMillis())) }
 }

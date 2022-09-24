@@ -12,23 +12,18 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SimpleNavigationViewModel @Inject constructor(private val router: Router): ViewModel() {
-    private val _args = MutableLiveData<SimpleNavigationArgs>()
-    val backStack = Transformations.map(_args) { args ->
-        val currentFragment = (args.backStack.lastOrNull() ?: 0) + 1
-        args.backStack.plus(currentFragment)
-    }
+    private var args: SimpleNavigationArgs? = null
 
     private val NAVIGATION_DELAY = 2500L
     private var navigationJob: Job? = null
 
     fun setUpArgs(args: SimpleNavigationArgs) {
-        _args.value = args
+        this.args = args
     }
 
     fun forwardAction() {
-        val backStack = backStack.value ?: return
-        val newArgs = SimpleNavigationArgs(backStack)
-        router.navigateTo(Screens.SimpleNavigationFragment(newArgs))
+        val nextNumber = (args?.number?.plus(1)) ?: return
+        router.navigateTo(Screens.SimpleNavigationFragment(nextNumber))
     }
 
     fun backAction() {
@@ -36,18 +31,16 @@ class SimpleNavigationViewModel @Inject constructor(private val router: Router):
     }
 
     fun replaceAction() {
-        val backStack = backStack.value ?: return
-        val newArgs = SimpleNavigationArgs(backStack)
-        router.replaceScreen(Screens.SimpleNavigationFragment(newArgs))
+        val nextNumber = (args?.number?.plus(1)) ?: return
+        router.replaceScreen(Screens.SimpleNavigationFragment(nextNumber))
     }
 
     fun forwardWithDelayAction() {
         navigationJob?.cancel()
         navigationJob = viewModelScope.launch {
             delay(NAVIGATION_DELAY)
-            val backStack = backStack.value ?: return@launch
-            val newArgs = SimpleNavigationArgs(backStack)
-            router.navigateTo(Screens.SimpleNavigationFragment(newArgs))
+            val nextNumber = (args?.number?.plus(1)) ?: return@launch
+            router.navigateTo(Screens.SimpleNavigationFragment(nextNumber))
         }
     }
 }
