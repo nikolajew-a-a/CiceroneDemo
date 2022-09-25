@@ -12,6 +12,7 @@ import com.example.android.ciceronedemo.ui.selection.SelectionFragment
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Replace
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import java.lang.ref.WeakReference
@@ -44,7 +45,7 @@ class BaseActivity : AppCompatActivity(), ChainHolder {
         setContentView(R.layout.base_activity)
 
         if (savedInstanceState == null) {
-            router.replaceScreen(Screens.SelectionFragment())
+            navigator.applyCommands(arrayOf<Command>(Replace(Screens.SelectionFragment())))
         }
     }
 

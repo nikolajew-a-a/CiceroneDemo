@@ -49,16 +49,10 @@
             android:text="New root"/>
 
         <Button
-            android:id="@+id/back_to_3_button"
+            android:id="@+id/back_to_selection_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back to 3"/>
-
-        <Button
-            android:id="@+id/finish_chain_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Finish chain"/>
+            android:text="Back to selection"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

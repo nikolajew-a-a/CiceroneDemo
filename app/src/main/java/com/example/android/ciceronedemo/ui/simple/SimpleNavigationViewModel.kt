@@ -43,4 +43,13 @@ class SimpleNavigationViewModel @Inject constructor(private val router: Router):
             router.navigateTo(Screens.SimpleNavigationFragment(nextNumber))
         }
     }
+
+    fun newRootAction() {
+        val nextNumber = (args?.number?.plus(1)) ?: return
+        router.newRootScreen(Screens.SimpleNavigationFragment(nextNumber))
+    }
+
+    fun backToSelectionAction() {
+        router.backTo(Screens.SelectionFragment())
+    }
 }

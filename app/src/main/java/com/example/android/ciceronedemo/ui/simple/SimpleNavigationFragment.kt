@@ -41,8 +41,7 @@ class SimpleNavigationFragment : BaseFragment(R.layout.fragment_simple_navigatio
         backButon.setOnClickListener { viewModel.backAction() }
         replaceButton.setOnClickListener { viewModel.replaceAction() }
         forwardWithDelayButton.setOnClickListener { viewModel.forwardWithDelayAction() }
-        newRootButton.setOnClickListener { }
-        backTo3Button.setOnClickListener { }
-        finishChainButton.setOnClickListener { }
+        newRootButton.setOnClickListener { viewModel.newRootAction() }
+        backToSelectionButton.setOnClickListener { viewModel.backToSelectionAction() }
     }
 }

@@ -8,6 +8,6 @@ import javax.inject.Inject
 class SelectionViewModel @Inject constructor(private val router: Router): ViewModel() {
 
     fun toSimpleNavigation() {
-        router.navigateTo(Screens.SimpleNavigationFragment(number = 0))
+        router.newChain(Screens.SimpleNavigationFragment(number = 0))
     }
 }
